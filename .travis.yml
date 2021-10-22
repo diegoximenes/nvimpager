@@ -50,8 +50,10 @@ install: |
 
 before_script: nvim --version
 
-script: |
-  case "$TRAVIS_OS_NAME" in
-    freebsd) gmake test BUSTED="$BUSTED";;
-    *)       make  test BUSTED="${BUSTED:-busted}";;
-  esac
+script:
+  - |
+    case "$TRAVIS_OS_NAME" in
+      freebsd) gmake test BUSTED="$BUSTED";;
+      *)       make  test BUSTED="${BUSTED:-busted}";;
+    esac
+  - man ./nvimpager.1 | cat
