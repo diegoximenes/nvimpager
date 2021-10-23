@@ -79,6 +79,8 @@ specific to nvimpager.
 
 The following fields (options) exist:
 
+; table start
+
 [[ *option*
 :- *type*
 :- *default*
@@ -87,6 +89,14 @@ The following fields (options) exist:
 :  bool
 :  true
 :  if some default less like maps should be defined inside pager mode
+
+; table end
+; list start
+
+; - *maps* (_true_): if some default less like maps should be defined inside
+;   pager mode
+
+; list end
 
 So to disable all mappings defined by nvimpager the user can put
 
