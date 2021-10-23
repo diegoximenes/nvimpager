@@ -45,6 +45,7 @@ before_install: |
 install: |
   case "$TRAVIS_OS_NAME" in
     freebsd) gmake install PREFIX=$HOME/.local;;
+    osx)     make  install PREFIX=$HOME/.local LEGACY_ROFF=true;;
     *)       make  install PREFIX=$HOME/.local;;
   esac
 
@@ -52,8 +53,11 @@ before_script: nvim --version
 
 script:
   - |
+    set -e
     case "$TRAVIS_OS_NAME" in
       freebsd) gmake test BUSTED="$BUSTED";;
+      # check that the man page can be rendered without error messages
+      osx)     test -z "$(man ./nvimpager.1 2>&1 >/dev/null)";&
       *)       make  test BUSTED="${BUSTED:-busted}";;
     esac
-  - man ./nvimpager.1 | cat
+  -
