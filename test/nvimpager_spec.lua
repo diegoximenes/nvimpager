@@ -159,6 +159,12 @@ describe("cat mode", function()
     assert.equal(expected, output)
   end)
 
+  it("handles color schemes with a non trivial Normal group", function()
+    local output = run("./nvimpager -c test/fixtures/makefile --cmd 'colorscheme blue'")
+    local expected = read("test/fixtures/makefile.blue")
+    assert.equal(expected, output)
+  end)
+
   it("highlights all files", function()
     local output = run("./nvimpager -c test/fixtures/makefile " ..
                                       "test/fixtures/help.txt ")

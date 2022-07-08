@@ -1,0 +1,4 @@
+[0;38;5;248;44m# a test makefile
+[0;1;91mPREFIX [0;93;44m= nothing
+[0;1;91mall:[0;93;44m nothing
+[0;96m	run command --option=[0;1;91m$(PREFIX)[0;93;44m
