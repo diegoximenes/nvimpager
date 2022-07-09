@@ -159,9 +159,17 @@ describe("cat mode", function()
     assert.equal(expected, output)
   end)
 
+  it("handles ansi bold escapes at the beginning of a file", function()
+    local output = run("./nvimpager -c test/fixtures/bold.ansi")
+    local expected = read("test/fixtures/bold.ansi")
+    assert.equal(expected, output)
+  end)
+
   it("handles color schemes with a non trivial Normal group", function()
-    local output = run("./nvimpager -c test/fixtures/makefile --cmd 'colorscheme blue'")
-    local expected = read("test/fixtures/makefile.blue")
+    -- local output = run("./nvimpager -c test/fixtures/makefile --cmd 'colorscheme blue'")
+
+    local output = run("./nvimpager -c test/fixtures/makefile --cmd 'hi Normal ctermfg=Blue guifg=Blue ctermbg=White guibg=White'")
+    local expected = read("test/fixtures/makefile.blue2")
     assert.equal(expected, output)
   end)
 
