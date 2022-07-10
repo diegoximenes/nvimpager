@@ -53,7 +53,7 @@ jobs:
       uses: cachix/install-nix-action@v16
     - uses: actions/checkout@v2
     - name: Show neovim version
-      run: nvim --version
+      run: nix develop .\#${{ matrix.version }} --command nvim --version
     - name: Run the test suite
       run: script -ec "nix develop .\#${{ matrix.version }} --check"
       env:
